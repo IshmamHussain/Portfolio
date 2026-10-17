@@ -80,6 +80,13 @@ function initMobileMenu() {
     });
   });
 
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMenu.classList.contains('open')) {
       navMenu.classList.remove('open');
@@ -1545,7 +1552,7 @@ function initDistantBlackHole() {
     particles.push({
       r,
       phi: Math.random() * Math.PI * 2,
-      speed: 0.015 + ((105 - r) / 70) * 0.035,
+      speed: 0.005 + ((105 - r) / 70) * 0.010,
       size: Math.random() * 1.6 + 1.1,
       isHot: Math.random() > 0.4
     });
@@ -1571,11 +1578,11 @@ function initDistantBlackHole() {
     ctx.clearRect(0, 0, width, height);
 
     // Continuous celestial rotation and inertial momentum decay
-    yaw += (0.005 + velYaw) * deltaFactor;
+    yaw += (0.0015 + velYaw) * deltaFactor;
     pitch = Math.max(-1.42, Math.min(1.42, pitch + velPitch));
     velYaw *= Math.pow(0.94, deltaFactor);
     velPitch *= Math.pow(0.94, deltaFactor);
-    spin += 0.02 * deltaFactor;
+    spin += 0.006 * deltaFactor;
 
     const cosP = Math.cos(pitch);
     const sinP = Math.sin(pitch);
@@ -1718,11 +1725,11 @@ function initDistantBlackHole() {
     // 4. Infalling Matter Particles (Rear Hemisphere)
     particles.forEach(p => {
       p.phi += p.speed * deltaFactor;
-      p.r -= 0.035 * deltaFactor;
+      p.r -= 0.012 * deltaFactor;
       if (p.r < Rs) {
         p.r = Rout + Math.random() * 8;
         p.phi = Math.random() * Math.PI * 2;
-        p.speed = 0.015 + ((Rout - p.r) / (Rout - Rs)) * 0.035;
+        p.speed = 0.005 + ((Rout - p.r) / (Rout - Rs)) * 0.010;
       }
 
       const u = p.phi + spin;
@@ -1946,7 +1953,7 @@ function initMassiveBlackHole() {
     particles.push({
       r,
       phi: Math.random() * Math.PI * 2,
-      speed: 0.012 + ((170 - r) / 120) * 0.036,
+      speed: 0.004 + ((170 - r) / 120) * 0.010,
       size: 1.3 + Math.random() * 2.2,
       isHot: Math.random() > 0.45
     });
@@ -1988,11 +1995,11 @@ function initMassiveBlackHole() {
     ctx.clearRect(0, 0, width, height);
 
     // Apply continuous celestial rotation + inertial momentum decay
-    yaw += (0.004 + velYaw) * deltaFactor;
+    yaw += (0.0012 + velYaw) * deltaFactor;
     pitch = Math.max(-1.42, Math.min(1.42, pitch + velPitch));
     velYaw *= Math.pow(0.94, deltaFactor);
     velPitch *= Math.pow(0.94, deltaFactor);
-    spin += 0.018 * deltaFactor;
+    spin += 0.006 * deltaFactor;
 
     const cosP = Math.cos(pitch);
     const sinP = Math.sin(pitch);
@@ -2133,11 +2140,11 @@ function initMassiveBlackHole() {
     // 4. Infalling Matter Particles (Rear Hemisphere)
     particles.forEach(p => {
       p.phi += p.speed * deltaFactor;
-      p.r -= 0.04 * deltaFactor;
+      p.r -= 0.014 * deltaFactor;
       if (p.r < Rs) {
         p.r = Rout + Math.random() * 12;
         p.phi = Math.random() * Math.PI * 2;
-        p.speed = 0.012 + ((Rout - p.r) / (Rout - Rs)) * 0.036;
+        p.speed = 0.004 + ((Rout - p.r) / (Rout - Rs)) * 0.010;
       }
 
       const u = p.phi + spin;
@@ -3127,11 +3134,11 @@ function initSpiralGalaxy() {
     ctx.clearRect(0, 0, width, height);
 
     // Continuous celestial rotation + inertial momentum decay
-    yaw += (0.003 + velYaw) * deltaFactor;
+    yaw += (0.0018 + velYaw) * deltaFactor;
     pitch = Math.max(-1.42, Math.min(1.42, pitch + velPitch));
     velYaw *= Math.pow(0.94, deltaFactor);
     velPitch *= Math.pow(0.94, deltaFactor);
-    spin += 0.012 * deltaFactor;
+    spin += 0.0075 * deltaFactor;
 
     mouseParallaxX += (targetParallaxX - mouseParallaxX) * 0.04 * deltaFactor;
     mouseParallaxY += (targetParallaxY - mouseParallaxY) * 0.04 * deltaFactor;
@@ -3523,11 +3530,11 @@ function initCartwheelGalaxy() {
 
     ctx.clearRect(0, 0, width, height);
 
-    yaw += (0.0035 + velYaw) * deltaFactor;
+    yaw += (0.0020 + velYaw) * deltaFactor;
     pitch = Math.max(-1.42, Math.min(1.42, pitch + velPitch));
     velYaw *= Math.pow(0.94, deltaFactor);
     velPitch *= Math.pow(0.94, deltaFactor);
-    spin += 0.014 * deltaFactor;
+    spin += 0.0085 * deltaFactor;
 
     mouseParallaxX += (targetParallaxX - mouseParallaxX) * 0.04 * deltaFactor;
     mouseParallaxY += (targetParallaxY - mouseParallaxY) * 0.04 * deltaFactor;
