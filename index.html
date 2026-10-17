@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishmam Hussain Chowdhury — Full-Stack Web Developer</title>
+  <meta name="description"
+    content="Portfolio of Ishmam Hussain Chowdhury, Computer Science &amp; Engineering undergrad at Metropolitan University, Bangladesh. Full-stack web developer specializing in Node.js, Express, MySQL, Tailwind CSS, and AI integrations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="assets/images/ishmam-profile.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23020408' stroke='%2338bdf8' stroke-width='6'/><text x='50' y='62' font-size='36' font-weight='bold' fill='%2338bdf8' text-anchor='middle' font-family='sans-serif'>IH</text></svg>">
+</head>
+
+<body>
+
+  <canvas class="space-starfield-canvas" id="space-starfield-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow" aria-hidden="true">
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+    <div class="glow-orb-3"></div>
+    <div class="glow-orb-4"></div>
+  </div>
+
+
+  <header class="site-header">
+    <nav class="nav-wrapper" aria-label="Main Navigation">
+      <a href="#intro" class="brand-logo" aria-label="Portfolio Homepage">
+        <span>Portfolio</span>
+      </a>
+
+      <ul class="nav-menu" id="primary-navigation">
+        <li><a href="#intro" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">Let's Talk</a>
+        <button class="mobile-toggle" aria-controls="primary-navigation" aria-expanded="false"
+          aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="section hero-section" id="intro">
+
+      <div class="section-bg section-bg-hero" aria-hidden="true">
+        <div class="distant-black-hole" aria-hidden="true" id="distant-black-hole-wrapper">
+          <canvas class="black-hole-canvas" id="black-hole-canvas" width="260" height="260"></canvas>
+        </div>
+        <div class="distant-gas-cloud" aria-hidden="true" id="distant-gas-cloud-wrapper">
+          <canvas class="gas-cloud-canvas" id="gas-cloud-canvas" width="460" height="300"></canvas>
+        </div>
+        <div class="planet-system planet-system-hero" data-planet-system="hero">
+          <canvas class="planet-3d-canvas" data-planet="hero" width="460" height="460"></canvas>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-status-pill">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <span>CSE Undergrad @ Metropolitan University, Bangladesh</span>
+            </div>
+
+            <h1 class="hero-title hero-title-fancy">
+              <span class="hero-greeting-fancy">Hi,</span>
+              <span class="hero-name-fancy">I'm Ishmam Hussain</span>
+            </h1>
+
+            <p class="hero-desc">
+              Full-stack web developer passionate about crafting robust, responsive applications with clean backends,
+              relational database efficiency, and modern user-centric interfaces.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Featured Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/IshmamHussain" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary">
+                <span>GitHub Profile ↗</span>
+              </a>
+            </div>
+
+            <div class="social-strip">
+              <span class="social-strip-label">Connect:</span>
+              <a href="https://github.com/IshmamHussain" target="_blank" rel="noopener noreferrer" class="btn-icon"
+                aria-label="Ishmam Hussain GitHub Profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/ishmam-hussain/" target="_blank" rel="noopener noreferrer"
+                class="btn-icon" aria-label="Ishmam Hussain LinkedIn Profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-portrait-card">
+              <div class="hero-portrait-wrapper">
+                <img src="assets/images/ishmam-profile.jpg" alt="Ishmam Hussain Chowdhury — Full-Stack Web Developer"
+                  width="400" height="400" loading="eager" fetchpriority="high" decoding="async">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+    <section class="section" id="about">
+
+      <div class="section-bg section-bg-about" aria-hidden="true">
+        <div class="spacetime-grid-mesh"></div>
+        <div class="hyperspace-streaks">
+          <div class="warp-streak streak-1"></div>
+          <div class="warp-streak streak-2"></div>
+          <div class="warp-streak streak-3"></div>
+          <div class="warp-streak streak-4"></div>
+          <div class="warp-streak streak-5"></div>
+        </div>
+        <div class="planet-system planet-system-about" data-planet-system="about">
+          <canvas class="planet-3d-canvas" data-planet="about" width="460" height="460"></canvas>
+        </div>
+        <div class="distant-spiral-galaxy" aria-hidden="true" id="distant-spiral-galaxy-wrapper">
+          <canvas class="galaxy-canvas" id="spiral-galaxy-canvas" width="380" height="280"></canvas>
+        </div>
+        <div class="space-nebula-glow about-nebula"></div>
+      </div>
+
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">About Me</div>
+          <h2 class="section-title">Computer Science undergrad with a focus on web engineering.</h2>
+          <p class="section-subtitle">
+            Passionate about transforming real-world student and educational challenges into functional, scalable, and
+            responsive web products.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-portrait-card">
+            <div class="about-spec-card">
+              <div class="spec-card-header">
+                <h3 class="spec-name">Ishmam Hussain</h3>
+                <span class="spec-role">CSE Undergrad &amp; Web Developer</span>
+              </div>
+
+              <div class="spec-details-list">
+                <div class="spec-detail-row">
+                  <span class="key">University</span>
+                  <span class="val">Metropolitan University</span>
+                </div>
+                <div class="spec-detail-row">
+                  <span class="key">Department</span>
+                  <span class="val">Computer Science &amp; Eng.</span>
+                </div>
+                <div class="spec-detail-row">
+                  <span class="key">Location</span>
+                  <span class="val">Sylhet, Bangladesh</span>
+                </div>
+                <div class="spec-detail-row">
+                  <span class="key">Primary Focus</span>
+                  <span class="val">Full-Stack Web Dev</span>
+                </div>
+                <div class="spec-detail-row">
+                  <span class="key">Status</span>
+                  <span class="val" style="color: var(--accent-emerald);">Open to Projects</span>
+                </div>
+              </div>
+
+              <div class="spec-actions">
+                <a href="https://github.com/IshmamHussain" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-secondary btn-sm" style="flex: 1;">
+                  <span>GitHub ↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ishmam-hussain/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm" style="flex: 1;">
+                  <span>LinkedIn ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="about-story">
+            <p class="about-lead">
+              I am an undergraduate student in Computer Science &amp; Engineering at Metropolitan University,
+              Bangladesh, actively developing modern web solutions.
+            </p>
+
+            <p class="about-text">
+              I enjoy designing and building complete web applications from scratch — connecting clean, accessible user
+              interfaces with robust Express.js backends and relational MySQL databases. Whether building automated test
+              evaluation pipelines using Google Gemini AI or building collaborative academic resource platforms for
+              university peers, I focus on clean code, dependable logic, and practical user utility.
+            </p>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="projects">
+
+      <div class="section-bg section-bg-projects" aria-hidden="true">
+        <div class="cosmic-nebula-wrapper" id="cosmic-nebula-wrapper" aria-hidden="true">
+          <canvas class="cosmic-nebula-canvas" id="cosmic-nebula-canvas" width="620" height="460"></canvas>
+        </div>
+        <div class="astral-field">
+          <div class="astral-dust dust-1"></div>
+          <div class="astral-dust dust-2"></div>
+          <div class="astral-dust dust-3"></div>
+        </div>
+        <div class="planet-system planet-system-projects" data-planet-system="projects">
+          <canvas class="planet-3d-canvas" data-planet="projects" width="560" height="560"></canvas>
+        </div>
+        <div class="space-nebula-glow projects-nebula"></div>
+      </div>
+
+      <div class="container">
+        <div class="section-header center">
+          <div class="section-badge">Featured Work</div>
+          <h2 class="section-title">Here are some personal projects</h2>
+          <p class="section-subtitle">
+            Deployed, production-grade applications built with modern JavaScript backends, clean databases, and AI
+            integration.
+          </p>
+        </div>
+
+
+
+        <div class="projects-grid">
+
+          <article class="project-card" data-category="ai-web">
+            <div class="project-media">
+              <img src="assets/images/project-bandup.png" alt="BandUp AI IELTS preparation application dashboard"
+                width="1024" height="483" loading="lazy" decoding="async">
+              <span class="project-badge-tag">AI-Powered SaaS • Live on Render</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <span>BandUp — IELTS Prep</span>
+              </h3>
+              <p class="project-subtitle">
+                An AI-powered web app for IELTS preparation across Reading, Listening, Writing, and Speaking with
+                automated Gemini AI scoring.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Gemini AI</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Vanilla JS</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://bandup-52ay.onrender.com" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm">Live Demo ↗</a>
+                <a href="https://github.com/IshmamHussain/BandUp" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-secondary btn-sm">GitHub Repo ↗</a>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="project-card" data-category="academic">
+            <div class="project-media">
+              <img src="assets/images/project-noteshub.png"
+                alt="University Notes Hub lecture slide and study resource platform" width="1024" height="485"
+                loading="lazy" decoding="async">
+              <span class="project-badge-tag">Academic Portal • Live on Vercel</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <span>University Notes Hub</span>
+              </h3>
+              <p class="project-subtitle">
+                A collaborative academic resource-sharing portal enabling university students to discover, preview, and
+                download semester course notes.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">JavaScript ES6+</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express REST</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Glassmorphic CSS</span>
+                <span class="tech-tag">Vercel</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://university-notes-hub.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm">Live Demo ↗</a>
+                <a href="https://github.com/IshmamHussain/University-Notes-Hub" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-secondary btn-sm">GitHub Repo ↗</a>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="project-card" data-category="ecommerce">
+            <div class="project-media">
+              <img src="assets/images/project-bazaardor.png"
+                alt="BazarDor Daily Commodity Market Price Tracker web application" width="1024" height="731"
+                loading="lazy" decoding="async" style="object-position: top center;">
+              <span class="project-badge-tag">Full-Stack eCommerce • Live on Vercel</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <span>BazarDor — Daily Market</span>
+              </h3>
+              <p class="project-subtitle">
+                A high-performance daily commodity price tracking and comparison platform in Bangladesh with live market
+                tickers and price breakdowns.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">Next.js 16</span>
+                <span class="tech-tag">React 19</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Better-Auth</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://bazaar-dor.vercel.app" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm">Live Demo ↗</a>
+                <a href="https://github.com/IshmamHussain/Bazaar-Dor" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-secondary btn-sm">GitHub Repo ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="skills">
+
+      <div class="section-bg section-bg-skills" aria-hidden="true">
+        <canvas id="skills-network-canvas"></canvas>
+        <div class="planet-system planet-system-skills" data-planet-system="skills">
+          <canvas class="planet-3d-canvas" data-planet="skills" width="460" height="460"></canvas>
+        </div>
+        <div class="skills-galactic-core"></div>
+        <div class="massive-black-hole" aria-hidden="true" id="massive-black-hole-wrapper">
+          <canvas class="massive-bh-canvas" id="massive-bh-canvas" width="420" height="420"></canvas>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Technical Stack</div>
+          <h2 class="section-title">Skills</h2>
+          <p class="section-subtitle">
+            Technologies, frameworks, and modern tools utilized to build responsive, robust, and scalable web
+            applications.
+          </p>
+        </div>
+
+        <div class="skills-showcase-grid">
+
+          <!-- Card 1: Frontend -->
+          <div class="skills-group-card">
+            <div class="skills-group-header">
+              <div class="skills-header-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <h3 class="skills-group-title">Frontend</h3>
+            </div>
+
+            <div class="skills-icon-matrix">
+              <!-- Item 1: Next.js -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 5.523 0 10-4.477 10-10 0-5.523-4.477-10-10-10zm2.75 14.75L9.5 9.25v7.5H8v-9.5h1.75l5.25 7.5v-7.5H16.5v9.5h-1.75z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Next.js</span>
+              </div>
+
+              <!-- Item 2: React -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <ellipse cx="12" cy="12" rx="10" ry="4"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse>
+                    <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">React</span>
+              </div>
+
+              <!-- Item 3: JavaScript -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="16.5" font-size="11" font-weight="800" font-family="system-ui, sans-serif"
+                      text-anchor="middle" fill="currentColor">JS</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">JavaScript</span>
+              </div>
+
+              <!-- Item 4: HTML5 -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 3h16l-1.5 15L12 21l-6.5-3L4 3z"></path>
+                    <path d="M16 8H8l.5 5h7l-.5 4-3.5 1-3.5-1-.2-2"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">HTML5</span>
+              </div>
+
+              <!-- Item 5: CSS3 -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 3h16l-1.5 15L12 21l-6.5-3L4 3z"></path>
+                    <path d="M8 8h8l-.5 4H8.5l.5 4 3 1 3-1 .4-3"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">CSS3</span>
+              </div>
+
+              <!-- Item 6: Tailwind CSS -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Tailwind CSS</span>
+              </div>
+
+              <!-- Item 7: Zustand -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="7" cy="6" r="2.5"></circle>
+                    <circle cx="17" cy="6" r="2.5"></circle>
+                    <rect x="5" y="8" width="14" height="12" rx="5"></rect>
+                    <circle cx="9.5" cy="13" r="1.2" fill="currentColor"></circle>
+                    <circle cx="14.5" cy="13" r="1.2" fill="currentColor"></circle>
+                    <path d="M11 16h2"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Zustand</span>
+              </div>
+
+              <!-- Item 8: Motion -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 2h16v8h-8zM4 10h8l8 8H4zM4 18h8v6z"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Framer</span>
+              </div>
+
+              <!-- Item 9: Figma -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M8 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3h3V2H8zm8 0h-3v6h3a3 3 0 0 0 0-6zM8 8a3 3 0 0 0-3 3 3 3 0 0 0 3 3h3V8H8zm8 0a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 0-6zm-8 6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3v-3H8z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Figma</span>
+              </div>
+
+              <!-- Item 10: Bootstrap -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="17.2" font-size="14.5" font-weight="800" font-family="Georgia, serif"
+                      text-anchor="middle" fill="currentColor">B</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Bootstrap</span>
+              </div>
+
+              <!-- Item 11: EJS -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="16" font-size="9" font-weight="800" font-family="system-ui, monospace"
+                      text-anchor="middle" fill="currentColor">EJS</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">EJS</span>
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <!-- Card 2: Backend -->
+          <div class="skills-group-card">
+            <div class="skills-group-header">
+              <div class="skills-header-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </div>
+              <h3 class="skills-group-title">Backend</h3>
+            </div>
+
+            <div class="skills-icon-matrix">
+              <!-- Item 1: Node.js -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l8 4.6v9.2L12 20.4l-8-4.6V6.6L12 2z"></path>
+                    <path d="M12 2v18.4"></path>
+                    <path d="M20 6.6L12 11.2 4 6.6"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Node.js</span>
+              </div>
+
+              <!-- Item 2: Express -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor"
+                      fill-opacity="0.08"></circle>
+                    <text x="12" y="15.5" font-size="10" font-weight="800" font-family="system-ui, sans-serif"
+                      text-anchor="middle" fill="currentColor">ex</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Express</span>
+              </div>
+
+              <!-- Item 3: TypeScript -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="16.5" font-size="11" font-weight="900" font-family="system-ui, sans-serif"
+                      text-anchor="middle" fill="currentColor">TS</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">TypeScript</span>
+              </div>
+
+              <!-- Item 4: MySQL -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="8" ry="3"></ellipse>
+                    <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path>
+                    <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">MySQL</span>
+              </div>
+
+              <!-- Item 5: MongoDB -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C8 6 6 10 6 14a6 6 0 0 0 12 0c0-4-2-8-6-12z"></path>
+                    <path d="M12 2v20"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">MongoDB</span>
+              </div>
+
+              <!-- Item 6: Supabase -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M13.2 2.3c-.6-.7-1.7-.5-2 .3L5.4 12.8c-.3.6.1 1.2.8 1.2h6.1l-2.1 7.7c-.3.9.7 1.6 1.4.9l7.8-8.2c.4-.4.2-1.1-.3-1.1H13l2.2-8.8c.1-.8-.4-1.7-1.1-2.2z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Supabase</span>
+              </div>
+
+              <!-- Item 7: Gemini AI -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C12 7.523 7.523 12 2 12C7.523 12 12 16.477 12 22C12 16.477 16.477 12 22 12C16.477 12 12 7.523 12 2Z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Gemini AI</span>
+              </div>
+
+              <!-- Item 8: JWT Auth -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <circle cx="12" cy="11" r="2"></circle>
+                    <path d="M12 13v3"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">JWT Auth</span>
+              </div>
+
+              <!-- Item 9: Better-Auth -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Better-Auth</span>
+              </div>
+
+              <!-- Item 10: REST APIs -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6L16 6a5 5 0 0 1 1 9.9"></path>
+                    <path d="M8 19l4-4 4 4"></path>
+                    <path d="M12 15v7"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">REST APIs</span>
+              </div>
+
+              <!-- Item 11: Python -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M11.9 2c-3.1 0-5.1.7-5.1 2.5v1.9h5.2v.7H4.3C2.5 7.1 2 9.1 2 11.8c0 2.8.9 4.6 3.1 4.6h1.7v-2.3c0-1.8 1.5-3.3 3.3-3.3h5.2c1.4 0 2.6-1.1 2.6-2.6V4.5c0-1.7-2.1-2.5-6-2.5zm-1.8 1.4a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6zm2 18.6c3.1 0 5.1-.7 5.1-2.5v-1.9H12v-.7h7.7c1.8 0 2.3-2 2.3-4.7 0-2.8-.9-4.6-3.1-4.6h-1.7v2.3c0 1.8-1.5 3.3-3.3 3.3H8.7c-1.4 0-2.6 1.1-2.6 2.6v3.7c0 1.7 2.1 2.5 6 2.5zm1.8-1.4a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Python</span>
+              </div>
+
+              <!-- Item 12: C / C++ -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="16.5" font-size="10.5" font-weight="900" font-family="system-ui, monospace"
+                      text-anchor="middle" fill="currentColor">C++</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">C / C++</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Card 3: Tools & DevOps -->
+          <div class="skills-group-card">
+            <div class="skills-group-header">
+              <div class="skills-header-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                  </path>
+                </svg>
+              </div>
+              <h3 class="skills-group-title">Tools &amp; DevOps</h3>
+            </div>
+
+            <div class="skills-icon-matrix">
+              <!-- Item 1: Git -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="6" cy="6" r="3"></circle>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="9" r="3"></circle>
+                    <path d="M6 9v6"></path>
+                    <path d="M9 9a9 9 0 0 1 9 0"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Git</span>
+              </div>
+
+              <!-- Item 2: GitHub -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">GitHub</span>
+              </div>
+
+              <!-- Item 3: Postman -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 3.5-2 3.5s2.24-.5 3.5-2"></path>
+                    <path d="M15 5l4 4"></path>
+                    <path d="M12 8l4 4"></path>
+                    <path d="M9 11l4 4"></path>
+                    <path d="M14.5 3.5a2.12 2.12 0 0 1 3 3L6 18l-4 2 2-4L14.5 3.5z"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Postman</span>
+              </div>
+
+              <!-- Item 4: Vercel -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L24 22H0L12 2Z"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Vercel</span>
+              </div>
+
+              <!-- Item 5: Render -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect width="24" height="24" rx="5" fill="currentColor" fill-opacity="0.12" stroke="currentColor"
+                      stroke-width="1.4"></rect>
+                    <text x="12" y="17" font-size="13" font-weight="800" font-family="system-ui, sans-serif"
+                      text-anchor="middle" fill="currentColor">R</text>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Render</span>
+              </div>
+
+              <!-- Item 6: Railway -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M4 12h16"></path>
+                    <path d="M7 8h10"></path>
+                    <path d="M7 16h10"></path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Railway</span>
+              </div>
+
+              <!-- Item 7: Grafana -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"></path>
+                    <path d="M7 14l4-5 4 3 5-7"></path>
+                    <circle cx="11" cy="9" r="1.5" fill="currentColor"></circle>
+                    <circle cx="15" cy="12" r="1.5" fill="currentColor"></circle>
+                    <circle cx="20" cy="5" r="1.5" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Grafana</span>
+              </div>
+
+              <!-- Item 8: InfluxDB -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2l6.8 3.8L12 11.8 5.2 8 12 4.2zm-7 5.1l6 3.3v6.7l-6-3.3V9.3zm8 10v-6.7l6-3.3v6.7l-6 3.3z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">InfluxDB</span>
+              </div>
+
+              <!-- Item 9: Supabase -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M13.2 2.3c-.6-.7-1.7-.5-2 .3L5.4 12.8c-.3.6.1 1.2.8 1.2h6.1l-2.1 7.7c-.3.9.7 1.6 1.4.9l7.8-8.2c.4-.4.2-1.1-.3-1.1H13l2.2-8.8c.1-.8-.4-1.7-1.1-2.2z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">Supabase</span>
+              </div>
+
+              <!-- Item 10: UDP Sockets -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="2"></circle>
+                    <path
+                      d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">UDP Sockets</span>
+              </div>
+
+              <!-- Item 11: NPM -->
+              <div class="skill-tile">
+                <div class="skill-squircle">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.13l13.74 0v13.74h-3.435V8.565h-3.435v10.305H5.13z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-tile-label">NPM</span>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="certificates">
+
+      <div class="section-bg section-bg-certificates" aria-hidden="true">
+        <div class="planetary-ring ring-saturn-outer"></div>
+        <div class="planetary-ring ring-saturn-inner"></div>
+        <div class="planetary-ring ring-saturn-core"></div>
+        <div class="eclipse-corona-flare"></div>
+        <div class="planet-system planet-system-certificates" data-planet-system="certificates">
+          <canvas class="planet-3d-canvas" data-planet="certificates" width="460" height="460"></canvas>
+        </div>
+        <div class="cert-shimmer-cluster">
+          <div class="cert-sparkle cert-sparkle-1"></div>
+          <div class="cert-sparkle cert-sparkle-2"></div>
+          <div class="cert-sparkle cert-sparkle-3"></div>
+          <div class="cert-sparkle cert-sparkle-4"></div>
+          <div class="cert-sparkle cert-sparkle-5"></div>
+        </div>
+        <div class="stellar-sun" aria-hidden="true">
+          <canvas class="stellar-sun-canvas" id="stellar-sun-canvas" width="360" height="360"></canvas>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Certificates &amp; Credentials</div>
+          <h2 class="section-title">Certificates &amp; Achievements</h2>
+          <p class="section-subtitle">
+            Academic milestones, certifications, and technical qualifications.
+          </p>
+        </div>
+
+        <div class="certificates-grid">
+
+          <!-- Certificate 1: The IT Aid (Web Design) -->
+          <div class="cert-card cert-card-showcase" data-cert-key="it-aid-web-design">
+            <div class="cert-media-preview" data-cert-trigger="it-aid-web-design" role="button" tabindex="0"
+              aria-label="Inspect Web Design Certificate">
+              <img src="assets/images/certificates/cert-the-it-aid-web-design.jpg"
+                alt="Certificate of Completion in Web Design — The IT Aid" class="cert-img" loading="lazy"
+                decoding="async">
+              <div class="cert-preview-overlay">
+                <span class="preview-badge">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span>View Details</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-top">
+                <div class="cert-badge-group">
+                  <span class="cert-verified cert-verified-gold">✓ Grade A+</span>
+                  <span class="cert-verified">● 2023</span>
+                </div>
+              </div>
+
+              <h3 class="cert-title">Web Design</h3>
+              <div class="cert-issuer">The IT Aid · Sylhet</div>
+
+              <div class="cert-actions">
+                <button type="button" class="btn btn-primary btn-sm btn-verify" data-cert-trigger="it-aid-web-design">
+                  <span>View Details ↗</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Certificate 2: Metropolitan University / MURS (Authorship) -->
+          <div class="cert-card cert-card-showcase" data-cert-key="murs-authorship">
+            <div class="cert-media-preview" data-cert-trigger="murs-authorship" role="button" tabindex="0"
+              aria-label="Inspect Research Authorship Certificate">
+              <img src="assets/images/certificates/cert-murs-authorship.png"
+                alt="Certificate of Authorship — Metropolitan University Research Society" class="cert-img"
+                loading="lazy" decoding="async">
+              <div class="cert-preview-overlay">
+                <span class="preview-badge">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span>View Details</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-top">
+                <div class="cert-badge-group">
+                  <span class="cert-verified cert-verified-blue">★ Authorship</span>
+                  <span class="cert-verified">● NICSDG-2026</span>
+                </div>
+              </div>
+
+              <h3 class="cert-title">Research Authorship</h3>
+              <div class="cert-issuer">Metropolitan University &amp; MURS</div>
+
+              <div class="cert-actions">
+                <button type="button" class="btn btn-primary btn-sm btn-verify" data-cert-trigger="murs-authorship">
+                  <span>View Details ↗</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Certificate 3: Leading University / LURS (Paper Presentation) -->
+          <div class="cert-card cert-card-showcase" data-cert-key="lurs-presentation">
+            <div class="cert-media-preview" data-cert-trigger="lurs-presentation" role="button" tabindex="0"
+              aria-label="Inspect LURS Paper Presentation Certificate">
+              <img src="assets/images/certificates/cert-lurs-presentation.jpg"
+                alt="Certificate of Participation — Leading University Research Society" class="cert-img" loading="lazy"
+                decoding="async">
+              <div class="cert-preview-overlay">
+                <span class="preview-badge">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span>View Details</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-top">
+                <div class="cert-badge-group">
+                  <span class="cert-verified cert-verified-cyan">★ Paper Presentation</span>
+                  <span class="cert-verified">● LURS-2026</span>
+                </div>
+              </div>
+
+              <h3 class="cert-title">Paper Presentation</h3>
+              <div class="cert-issuer">Leading University &amp; LURS</div>
+
+              <div class="cert-actions">
+                <button type="button" class="btn btn-primary btn-sm btn-verify" data-cert-trigger="lurs-presentation">
+                  <span>View Details ↗</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="contact">
+
+      <div class="section-bg section-bg-contact" aria-hidden="true">
+        <div class="pulsar-beam-emitter"></div>
+        <div class="gravitational-wave wave-1"></div>
+        <div class="gravitational-wave wave-2"></div>
+        <div class="gravitational-wave wave-3"></div>
+        <div class="pulsar-singularity-core"></div>
+        <div class="planet-system planet-system-contact" data-planet-system="contact">
+          <canvas class="planet-3d-canvas" data-planet="contact" width="460" height="460"></canvas>
+        </div>
+        <div class="contact-signal-particles">
+          <span class="signal-dot dot-1"></span>
+          <span class="signal-dot dot-2"></span>
+          <span class="signal-dot dot-3"></span>
+          <span class="signal-dot dot-4"></span>
+        </div>
+        <div class="contact-cartwheel-galaxy" aria-hidden="true" id="contact-cartwheel-galaxy-wrapper">
+          <canvas class="cartwheel-galaxy-canvas" id="contact-cartwheel-galaxy-canvas" width="400"
+            height="300"></canvas>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Get In Touch</div>
+          <h2 class="section-title">Let's connect and build together.</h2>
+          <p class="section-subtitle">
+            Whether you want to discuss a full-stack project, a collaborative software build, or internships and
+            opportunities, feel free to reach out.
+          </p>
+        </div>
+
+        <div class="contact-hub-card">
+          <div class="contact-hub-header">
+            <div class="contact-hub-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3 class="contact-card-title">Feel Free To Connect</h3>
+            </div>
+          </div>
+
+          <div class="contact-methods-grid">
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-method-details">
+                <div class="contact-method-label">Email</div>
+                <a href="mailto:ishmamhussain003@gmail.com" class="contact-method-val"
+                  style="color: var(--primary);">ishmamhussain003@gmail.com</a>
+              </div>
+              <button type="button" class="btn-copy-email" data-copy-email aria-label="Copy email address to clipboard"
+                title="Copy email address">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </div>
+              <div class="contact-method-details">
+                <div class="contact-method-label">LinkedIn Profile</div>
+                <a href="https://www.linkedin.com/in/ishmam-hussain/" target="_blank" rel="noopener noreferrer"
+                  class="contact-method-val" style="color: var(--primary);">linkedin.com/in/ishmam-hussain ↗</a>
+              </div>
+            </div>
+
+
+            <div class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                  </path>
+                </svg>
+              </div>
+              <div class="contact-method-details">
+                <div class="contact-method-label">GitHub Profile</div>
+                <a href="https://github.com/IshmamHussain" target="_blank" rel="noopener noreferrer"
+                  class="contact-method-val" style="color: var(--primary);">github.com/IshmamHussain ↗</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="contact-hub-footer">
+            <div class="contact-availability">
+              <span class="status-pulse" aria-hidden="true"></span>
+              <div class="availability-text">
+                <strong>Current Status:</strong> CSE Undergrad @ Metropolitan University, BD • Open for web engineering
+                projects &amp; collaborations.
+              </div>
+            </div>
+
+            <div class="contact-hub-actions">
+              <a href="mailto:ishmamhussain003@gmail.com" class="btn btn-primary">
+                <span>Compose Direct Email</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/ishmam-hussain/" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary">
+                <span>Connect on LinkedIn ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#intro" class="brand-logo" aria-label="Portfolio Homepage">
+          <span>Portfolio</span>
+        </a>
+
+        <ul class="footer-links">
+          <li><a href="#intro">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button type="button" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+          aria-label="Scroll back to top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ishmam Hussain Chowdhury • Computer Science &amp; Engineering, Metropolitan University.</p>
+        <p>Built with clean HTML5, modern Vanilla CSS, and JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="modal-backdrop" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Details</h3>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close modal dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+
+      </div>
+    </div>
+  </div>
+
+
+  <canvas class="cursor-particles-canvas" id="cursor-particles-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+
+</html>
