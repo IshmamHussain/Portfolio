@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacetime Anomaly • Ishmam Hussain Chowdhury</title>
+  <meta name="description"
+    content="404 Spacetime Anomaly — Looks like this page was pulled into a cosmic singularity. Give Ishmam a nudge to get it back online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23020408' stroke='%2338bdf8' stroke-width='6'/><text x='50' y='62' font-size='36' font-weight='bold' fill='%2338bdf8' text-anchor='middle' font-family='sans-serif'>IH</text></svg>">
+  <style>
+    :root {
+      --bg-main: #020408;
+      --primary: #38bdf8;
+      --primary-hover: #7dd3fc;
+      --accent-violet: #a855f7;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-main: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Sora', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 24px 16px;
+    }
+
+    /* Ambient Space Canvas - Giant Black Hole Vortex */
+    #black-hole-vortex-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: auto;
+      cursor: crosshair;
+    }
+
+    /* Cosmic Ambient Nebular Fog */
+    .anomaly-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.12) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 75%);
+    }
+
+    /* Centered Glassmorphism Anomaly Tile */
+    .anomaly-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 680px;
+      padding: clamp(28px, 4.5vw, 44px);
+      background: rgba(6, 10, 22, 0.68);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid rgba(56, 189, 248, 0.32);
+      border-radius: 26px;
+      box-shadow: 0 0 60px rgba(56, 189, 248, 0.15),
+        0 24px 55px rgba(0, 0, 0, 0.85),
+        inset 0 0 30px rgba(168, 85, 247, 0.1);
+      text-align: center;
+      animation: floatGentle 6s ease-in-out infinite;
+      pointer-events: auto;
+    }
+
+    @keyframes floatGentle {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        box-shadow: 0 0 60px rgba(56, 189, 248, 0.15), 0 24px 55px rgba(0, 0, 0, 0.85);
+      }
+
+      50% {
+        transform: translateY(-8px);
+        box-shadow: 0 0 75px rgba(168, 85, 247, 0.25), 0 32px 65px rgba(0, 0, 0, 0.95);
+      }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: clamp(11.5px, 1.1vw, 12.5px);
+      color: var(--accent-rose);
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
+    }
+
+    .status-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-rose);
+      box-shadow: 0 0 10px var(--accent-rose);
+      animation: blinkRed 1.6s ease-in-out infinite;
+    }
+
+    @keyframes blinkRed {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+    }
+
+    .error-code {
+      font-family: var(--font-mono);
+      font-size: clamp(52px, 6.8vw, 82px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--accent-violet) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+      text-shadow: 0 0 40px rgba(56, 189, 248, 0.45);
+    }
+
+    .main-message {
+      font-family: var(--font-serif);
+      font-size: clamp(20px, 2.3vw, 27px);
+      font-weight: 600;
+      line-height: 1.38;
+      color: #ffffff;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .sub-message {
+      font-size: clamp(13.5px, 1.15vw, 15.5px);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 28px auto;
+    }
+
+    .actions-cluster {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn-nudge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+      color: #020408;
+      font-weight: 700;
+      font-size: clamp(13.5px, 1vw, 15px);
+      padding: 12px 26px;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-nudge:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+      background: linear-gradient(135deg, var(--primary-hover) 0%, #38bdf8 100%);
+    }
+
+    .btn-orbit {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      font-weight: 600;
+      font-size: clamp(13.5px, 1vw, 15px);
+      padding: 12px 24px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-orbit:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-copy-email-compact {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px dashed rgba(56, 189, 248, 0.4);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-email-compact:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .canvas-instruction {
+      margin-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      opacity: 0.8;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 640px) {
+      .anomaly-container {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      .actions-cluster {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .actions-cluster .btn-nudge,
+      .actions-cluster .btn-orbit,
+      .actions-cluster .btn-copy-email-compact {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="black-hole-vortex-canvas" aria-label="Interactive Black Hole Singularity"></canvas>
+  <div class="anomaly-glow" aria-hidden="true"></div>
+
+  <!-- Main Floating Centered Anomaly Card -->
+  <main class="anomaly-container" role="main">
+    <div class="status-badge">
+      <span class="status-pulse-dot" aria-hidden="true"></span>
+      <span>Vercel Edge Anomaly Detected</span>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <h1 class="main-message">
+      "Ah, how unfortunate. It seems you've stumbled upon a singularity..."
+    </h1>
+
+    <p class="sub-message">
+      Gravitational collapse in progress. The destination URL has been swallowed past the event horizon into the
+      singularity.
+    </p>
+
+    <div class="actions-cluster">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ishmamhussain003@gmail.com&su=Portfolio%20Wake-Up%20Nudge!&body=Hey%20Ishmam,%20looks%20like%20a%20route%20hit%20a%20black%20hole.%20Giving%20you%20a%20quick%20nudge%20to%20check%20Vercel!"
+        target="_blank" rel="noopener noreferrer" class="btn-nudge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <span>Give Ishmam a Nudge</span>
+      </a>
+
+      <a href="/" class="btn-orbit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Return to Safe Orbit</span>
+      </a>
+
+      <button type="button" class="btn-copy-email-compact" id="copy-email-btn" title="Copy Ishmam's email to clipboard">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span id="copy-email-text">Copy Email</span>
+      </button>
+    </div>
+
+    <div class="canvas-instruction">
+      <span>💡 Move your mouse or drag across the screen to bend spacetime and accelerate the accretion vortex</span>
+    </div>
+  </main>
+
+  <script>
+    // Copy email helper
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyText = document.getElementById('copy-email-text');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('ishmamhussain003@gmail.com').then(() => {
+          copyText.textContent = 'Copied to Clipboard!';
+          copyBtn.style.borderColor = 'var(--primary)';
+          copyBtn.style.color = 'var(--primary)';
+          setTimeout(() => {
+            copyText.textContent = 'Copy Email';
+            copyBtn.style.borderColor = '';
+            copyBtn.style.color = '';
+          }, 2400);
+        }).catch(() => {
+          window.location.href = 'mailto:ishmamhussain003@gmail.com';
+        });
+      });
+    }
+
+    // ========================================================
+    // GIANT INTERACTIVE BLACK HOLE VORTEX (CENTERED BEHIND TILE)
+    // ========================================================
+    (function initGiantBlackHole() {
+      const canvas = document.getElementById('black-hole-vortex-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }, { passive: true });
+
+      // Centered directly behind the card
+      let cx = width / 2;
+      let cy = height / 2;
+      let targetCx = cx;
+      let targetCy = cy;
+
+      // Event horizon radius & Photon Sphere radius
+      const getSingularityRadius = () => Math.min(width, height) * 0.17 + 20;
+
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let tiltPitch = 0.38;
+      let tiltYaw = 0;
+
+      window.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        if (isDragging) {
+          const dx = e.clientX - dragStartX;
+          const dy = e.clientY - dragStartY;
+          dragStartX = e.clientX;
+          dragStartY = e.clientY;
+          tiltYaw += dx * 0.005;
+          tiltPitch = Math.max(0.2, Math.min(0.65, tiltPitch + dy * 0.003));
+        }
+
+        // Mild gravitational lens pull towards cursor
+        targetCx = width / 2 + (e.clientX - width / 2) * 0.07;
+        targetCy = height / 2 + (e.clientY - height / 2) * 0.07;
+      }, { passive: true });
+
+      window.addEventListener('pointerup', () => { isDragging = false; });
+      window.addEventListener('pointercancel', () => { isDragging = false; });
+
+      // Background Starfield
+      const bgStars = [];
+      const starCount = Math.min(240, Math.floor((width * height) / 5500));
+      for (let i = 0; i < starCount; i++) {
+        bgStars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 1.5 + 0.5,
+          alpha: Math.random() * 0.6 + 0.2,
+          color: ['#ffffff', '#bae6fd', '#c084fc', '#fef08a'][Math.floor(Math.random() * 4)]
+        });
+      }
+
+      // Swirling Infalling Particles & Lost Code Fragments
+      const particles = [];
+      const particleCount = 280;
+      const debrisSymbols = ['404', '{ }', '< />', 'null', 'void', 'undefined', '*', 'ERR'];
+
+      for (let i = 0; i < particleCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const maxR = Math.max(width, height) * 0.68;
+        const minR = getSingularityRadius() * 1.04;
+        const dist = minR + Math.random() * (maxR - minR);
+
+        particles.push({
+          angle: angle,
+          dist: dist,
+          speed: (0.008 + (1 / (dist * 0.04 + 1)) * 0.035),
+          infallRate: Math.random() * 0.75 + 0.35,
+          size: Math.random() * 2.8 + 1.2,
+          color: Math.random() > 0.4 ? '#38bdf8' : (Math.random() > 0.5 ? '#a855f7' : '#f59e0b'),
+          isText: Math.random() < 0.08,
+          text: debrisSymbols[Math.floor(Math.random() * debrisSymbols.length)],
+          opacity: Math.random() * 0.7 + 0.3
+        });
+      }
+
+      let spin = 0;
+      let lastTime = 0;
+
+      function render(time) {
+        const curTime = time || performance.now();
+        const dt = lastTime ? Math.min((curTime - lastTime) / 1000, 0.1) : 0.016;
+        lastTime = curTime;
+        const deltaFactor = dt * 60;
+
+        // Smooth gravitational center tracking
+        cx += (targetCx - cx) * 0.06 * deltaFactor;
+        cy += (targetCy - cy) * 0.06 * deltaFactor;
+
+        spin += 0.015 * deltaFactor;
+        const Rs = getSingularityRadius();
+        const Rphoton = Rs * 1.42;
+        const Rlensing = Rs * 2.8;
+
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Draw Background Stars (Lensed around singularity)
+        for (let i = 0; i < bgStars.length; i++) {
+          const star = bgStars[i];
+          const dx = star.x - cx;
+          const dy = star.y - cy;
+          const dist = Math.hypot(dx, dy);
+
+          // Skip stars directly behind event horizon
+          if (dist < Rs * 0.95) continue;
+
+          let drawX = star.x;
+          let drawY = star.y;
+          if (dist < Rlensing * 1.8 && dist > Rs) {
+            const deflection = (Rs * Rs) / (dist * dist) * 18;
+            drawX += (dx / dist) * deflection;
+            drawY += (dy / dist) * deflection;
+          }
+
+          ctx.fillStyle = star.color;
+          ctx.globalAlpha = star.alpha;
+          ctx.beginPath();
+          ctx.arc(drawX, drawY, star.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.globalAlpha = 1;
+
+        // 2. Gargantuan Spacetime Curvature Deep Radial Glow
+        const warpGlow = ctx.createRadialGradient(cx, cy, Rs * 0.6, cx, cy, Math.max(width, height) * 0.55);
+        warpGlow.addColorStop(0, 'rgba(168, 85, 247, 0.44)');
+        warpGlow.addColorStop(0.22, 'rgba(56, 189, 248, 0.28)');
+        warpGlow.addColorStop(0.48, 'rgba(245, 158, 11, 0.15)');
+        warpGlow.addColorStop(0.78, 'rgba(15, 23, 42, 0.05)');
+        warpGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = warpGlow;
+        ctx.fillRect(0, 0, width, height);
+
+        // 3. Relativistic Accretion Disk (Background Curve - Lensed Einstein Arc)
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(tiltYaw);
+        ctx.scale(1, tiltPitch);
+
+        // Swirling Accretion Glow Cloud
+        const diskGlow = ctx.createRadialGradient(0, 0, Rs * 1.05, 0, 0, Rs * 4.2);
+        diskGlow.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
+        diskGlow.addColorStop(0.18, 'rgba(56, 189, 248, 0.82)');
+        diskGlow.addColorStop(0.48, 'rgba(168, 85, 247, 0.62)');
+        diskGlow.addColorStop(0.8, 'rgba(245, 158, 11, 0.32)');
+        diskGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        ctx.fillStyle = diskGlow;
+        ctx.beginPath();
+        ctx.arc(0, 0, Rs * 4.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // 4. Infalling Swirling Matter Particles & Debris
+        ctx.save();
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          // Keplerian orbital acceleration: faster near singularity
+          const orbitalSpeed = (0.012 + (Rs / (p.dist + 1)) * 0.065) * deltaFactor;
+          p.angle += orbitalSpeed;
+
+          // Inward gravitational pull towards the black hole
+          const gravityInfall = (p.infallRate * (1 + (Rs / (p.dist + 1)) * 3.8)) * deltaFactor;
+          p.dist -= gravityInfall;
+
+          // When swallowed past event horizon, respawn from outer space
+          if (p.dist <= Rs * 0.98) {
+            p.dist = Math.max(width, height) * (0.45 + Math.random() * 0.25);
+            p.angle = Math.random() * Math.PI * 2;
+            p.opacity = Math.random() * 0.7 + 0.3;
+          }
+
+          // Elliptical perspective compression
+          const cosA = Math.cos(p.angle);
+          const sinA = Math.sin(p.angle);
+          const px = cx + cosA * p.dist;
+          const py = cy + sinA * (p.dist * tiltPitch);
+
+          // Doppler shift: Approaching side is brighter cyan/white, receding side is amber
+          const doppler = (sinA + 1) * 0.5;
+          const proximityToHole = Math.max(0, 1 - (p.dist - Rs) / (Rs * 2.5));
+
+          if (p.isText) {
+            ctx.font = '700 ' + Math.max(10, Math.floor(13 * proximityToHole + 10)) + 'px JetBrains Mono, monospace';
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.min(1, p.opacity * (0.4 + doppler * 0.6));
+            ctx.fillText(p.text, px, py);
+          } else {
+            ctx.beginPath();
+            ctx.arc(px, py, p.size * (1 + proximityToHole * 0.8), 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.min(1, p.opacity * (0.35 + doppler * 0.65));
+            ctx.fill();
+          }
+        }
+        ctx.restore();
+
+        // 5. Relativistic Einstein Photon Sphere (Radiant White/Cyan Halo Ring)
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, Rphoton, 0, Math.PI * 2);
+        ctx.lineWidth = Math.max(3.5, Rs * 0.08);
+        ctx.strokeStyle = 'rgba(255, 248, 235, 0.98)';
+        ctx.shadowColor = '#38bdf8';
+        ctx.shadowBlur = 45;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, Rphoton * 1.15, 0, Math.PI * 2);
+        ctx.lineWidth = Math.max(2, Rs * 0.04);
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.78)';
+        ctx.shadowColor = '#a855f7';
+        ctx.shadowBlur = 32;
+        ctx.stroke();
+        ctx.restore();
+
+        // 6. The Pure Event Horizon (The Absolute Singularity Void)
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, Rs, 0, Math.PI * 2);
+        ctx.fillStyle = '#010204'; // Deepest cosmic obsidian black
+        ctx.shadowColor = '#000000';
+        ctx.shadowBlur = 55;
+        ctx.fill();
+
+        // Singularity boundary shadow ring
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.98)';
+        ctx.stroke();
+        ctx.restore();
+
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+
+</html>
