@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileMenu();
+  initNavbarRotatingMoon();
   initProjectFilters();
   initModals();
   initCopyEmail();
@@ -93,6 +94,142 @@ function initMobileMenu() {
       toggleBtn.setAttribute('aria-expanded', 'false');
     }
   });
+}
+
+
+function initNavbarRotatingMoon() {
+  if (typeof THREE === 'undefined') return;
+  const canvas = document.getElementById('nav-moon-canvas');
+  const wrapper = document.getElementById('nav-moon-wrapper');
+  if (!canvas || !wrapper) return;
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true
+  });
+  renderer.setSize(width, height, false);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 50);
+  camera.position.z = 3.6;
+
+  // Realistic directional sunlight (giving a lunar crescent / gibbous shadow)
+  const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
+  dirLight.position.set(-3.5, 2.0, 3.0);
+  scene.add(dirLight);
+
+  const ambientLight = new THREE.AmbientLight(0x38bdf8, 0.35);
+  scene.add(ambientLight);
+
+  // Generate high-resolution procedural lunar texture with craters & maria
+  const texCanvas = document.createElement('canvas');
+  texCanvas.width = 512;
+  texCanvas.height = 256;
+  const tCtx = texCanvas.getContext('2d');
+
+  const grad = tCtx.createLinearGradient(0, 0, 0, 256);
+  grad.addColorStop(0, '#94a3b8');
+  grad.addColorStop(0.5, '#cbd5e1');
+  grad.addColorStop(1, '#64748b');
+  tCtx.fillStyle = grad;
+  tCtx.fillRect(0, 0, 512, 256);
+
+  // Dark lunar maria patches (seas)
+  tCtx.fillStyle = 'rgba(30, 41, 59, 0.65)';
+  for (let i = 0; i < 35; i++) {
+    const cx = (i * 47) % 512;
+    const cy = 20 + ((i * 59) % 216);
+    const rw = 12 + ((i * 7) % 28);
+    const rh = 8 + ((i * 5) % 18);
+    tCtx.beginPath();
+    tCtx.ellipse(cx, cy, rw, rh, i * 0.4, 0, Math.PI * 2);
+    tCtx.fill();
+  }
+
+  // Bright impact crater rays
+  tCtx.fillStyle = 'rgba(241, 245, 249, 0.45)';
+  for (let i = 0; i < 25; i++) {
+    const cx = (i * 71 + 18) % 512;
+    const cy = 25 + ((i * 83) % 206);
+    tCtx.beginPath();
+    tCtx.arc(cx, cy, 3 + (i % 4), 0, Math.PI * 2);
+    tCtx.fill();
+  }
+
+  const moonTex = new THREE.CanvasTexture(texCanvas);
+  const moonGeo = new THREE.SphereGeometry(1.15, 36, 36);
+  const moonMat = new THREE.MeshStandardMaterial({
+    map: moonTex,
+    roughness: 0.82,
+    metalness: 0.08
+  });
+  const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+  scene.add(moonMesh);
+
+  let isHovered = false;
+  wrapper.addEventListener('pointerenter', () => { isHovered = true; });
+  wrapper.addEventListener('pointerleave', () => { isHovered = false; });
+
+  // Interactive drag / flick
+  let isDragging = false;
+  let prevX = 0;
+  let velY = 0;
+
+  wrapper.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    prevX = e.clientX;
+    velY = 0;
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - prevX;
+    prevX = e.clientX;
+    velY = dx * 0.02;
+    moonMesh.rotation.y += velY;
+  });
+
+  window.addEventListener('pointerup', () => { isDragging = false; });
+  window.addEventListener('pointercancel', () => { isDragging = false; });
+
+  let animId = null;
+  let lastTime = 0;
+
+  function render(time) {
+    const curTime = time || performance.now();
+    const dt = lastTime ? Math.min((curTime - lastTime) / 1000, 0.1) : 0.016;
+    lastTime = curTime;
+    const delta = dt * 60;
+
+    if (!isDragging) {
+      velY *= Math.pow(0.95, delta);
+      const baseSpeed = isHovered ? 0.022 : 0.0075;
+      moonMesh.rotation.y += (baseSpeed + velY) * delta;
+    }
+
+    renderer.render(scene, camera);
+    animId = requestAnimationFrame(render);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      lastTime = 0;
+    } else if (!animId) {
+      lastTime = 0;
+      animId = requestAnimationFrame(render);
+    }
+  });
+
+  animId = requestAnimationFrame(render);
 }
 
 
