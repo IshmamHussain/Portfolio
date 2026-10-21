@@ -2136,7 +2136,7 @@ img {
   /* Hero Mobile */
   .hero-section {
     padding-top: 96px;
-    padding-bottom: 36px;
+    padding-bottom: 110px;
     min-height: auto;
   }
 
@@ -3313,5 +3313,53 @@ img {
     pointer-events: none;
   }
 }
+
+/* ==========================================================================
+   DISTANT 3D SPACE STATION (CELESTIAL BACKGROUND OBJECT)
+   ========================================================================== */
+
+.distant-space-station {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(170px, 18vw, 250px);
+  height: clamp(120px, 13vw, 175px);
+  pointer-events: none !important;
+  user-select: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.88;
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.3));
+  will-change: transform;
+}
+
+.space-station-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none !important;
+}
+
+@media (max-width: 1024px) {
+  .distant-space-station {
+    bottom: 1.5%;
+    width: clamp(140px, 18vw, 200px);
+    height: clamp(100px, 13vw, 140px);
+  }
+}
+
+@media (max-width: 768px) {
+  .distant-space-station {
+    bottom: 1%;
+    width: 150px;
+    height: 110px;
+    opacity: 0.85;
+  }
+}
+
+
 
 

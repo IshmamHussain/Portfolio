@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCosmicNebula();
   initSpiralGalaxy();
   initCartwheelGalaxy();
+  initSpaceStation3D();
 });
 
 
@@ -3807,3 +3808,289 @@ function initCartwheelGalaxy() {
     animId = requestAnimationFrame(draw);
   }
 }
+
+/* ==========================================================================
+   ORBITAL SPACE STATION AEGIS-01 (INTERACTIVE 3D THREE.JS SIMULATION)
+   ========================================================================== */
+
+function initSpaceStation3D() {
+  if (typeof THREE === 'undefined') return;
+
+  const canvas = document.getElementById('space-station-3d-canvas');
+  const wrapper = document.getElementById('distant-space-station-wrapper');
+  if (!canvas || !wrapper) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // 1. Scene, Camera, Renderer Setup
+  const scene = new THREE.Scene();
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+
+  const updateSize = () => {
+    const width = wrapper.clientWidth || 240;
+    const height = wrapper.clientHeight || 160;
+    const isMobile = window.innerWidth <= 768;
+    renderer.setSize(width, height, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.5));
+    if (camera) {
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+  };
+
+  const initialWidth = wrapper.clientWidth || 240;
+  const initialHeight = wrapper.clientHeight || 160;
+  const camera = new THREE.PerspectiveCamera(34, initialWidth / initialHeight, 0.1, 100);
+  camera.position.set(0, 0.45, 9.6);
+  camera.lookAt(0, 0, 0);
+
+  updateSize();
+  window.addEventListener('resize', updateSize, { passive: true });
+
+  // 2. High-Key Celestial Sunlight (Interstellar cinematic lighting: crisp directional light)
+  const sunLight = new THREE.DirectionalLight(0xffffff, 2.8);
+  sunLight.position.set(4.5, 5, 5); // Crisp sunlight striking the front-facing rotating modules
+  scene.add(sunLight);
+
+  const ambientLight = new THREE.AmbientLight(0x38bdf8, 0.65); // Soft cyan ambient glow from surrounding space
+  scene.add(ambientLight);
+
+  const rimLight = new THREE.DirectionalLight(0x60a5fa, 0.9);
+  rimLight.position.set(-5, -2, -3); // Edge rim light
+  scene.add(rimLight);
+
+  const hubLight = new THREE.PointLight(0x38bdf8, 1.2, 4);
+  hubLight.position.set(0, 0, 0.6);
+  scene.add(hubLight);
+
+  // 3. Authentic Spacecraft Materials (Interstellar Endurance white thermal tiles, dark graphite joints)
+  const hullMat = new THREE.MeshStandardMaterial({
+    color: 0xf8fafc, // Crisp off-white thermal ceramic hull
+    roughness: 0.42,
+    metalness: 0.16
+  });
+
+  const darkJointMat = new THREE.MeshStandardMaterial({
+    color: 0x334155, // Dark titanium structural joint collars
+    roughness: 0.48,
+    metalness: 0.32
+  });
+
+  const spokeMat = new THREE.MeshStandardMaterial({
+    color: 0x94a3b8, // Metallic titanium structural tubes
+    roughness: 0.40,
+    metalness: 0.36
+  });
+
+  const solarFacetMat = new THREE.MeshStandardMaterial({
+    color: 0x0f294d, // Deep cosmic blue solar/radiator panels on outer facets
+    roughness: 0.35,
+    metalness: 0.38
+  });
+
+  const windowCyanMat = new THREE.MeshBasicMaterial({
+    color: 0x38bdf8,
+    transparent: true,
+    opacity: 0.85
+  });
+
+  const windowAmberMat = new THREE.MeshBasicMaterial({
+    color: 0xf59e0b,
+    transparent: true,
+    opacity: 0.80
+  });
+
+  const nozzleMat = new THREE.MeshStandardMaterial({
+    color: 0x1e293b,
+    roughness: 0.35,
+    metalness: 0.55
+  });
+
+  const ionPlumeMat = new THREE.MeshBasicMaterial({
+    color: 0x38bdf8,
+    transparent: true,
+    opacity: 0.45,
+    blending: THREE.AdditiveBlending
+  });
+
+  // 4. Construct Interstellar Endurance Rotating Artificial Gravity Ring
+  const stationRoot = new THREE.Group();
+  scene.add(stationRoot);
+
+  // Cinematic 3D angle so the ring and its rotation are clearly visible in perspective
+  stationRoot.rotation.x = 0.42;
+  stationRoot.rotation.y = -0.34;
+  stationRoot.rotation.z = -0.06;
+
+  // The rotating artificial gravity ring assembly (rotates as a single unit)
+  const ringGroup = new THREE.Group();
+  stationRoot.add(ringGroup);
+
+  const ringRadius = 2.25;
+  const moduleCount = 12; // 12 distinct modular compartments like the Endurance
+  const plumes = [];
+
+  for (let i = 0; i < moduleCount; i++) {
+    const theta = (i / moduleCount) * Math.PI * 2;
+    const modGroup = new THREE.Group();
+    modGroup.position.set(Math.cos(theta) * ringRadius, Math.sin(theta) * ringRadius, 0);
+    modGroup.rotation.z = theta + Math.PI / 2; // Tangent to circular perimeter
+
+    // Main boxy module container
+    const isEngine = (i % 3 === 0); // 4 engine/docking modules at 0, 90, 180, 270 deg
+    const boxGeo = new THREE.BoxGeometry(0.72, 0.30, 0.42);
+    const boxMesh = new THREE.Mesh(boxGeo, hullMat);
+    modGroup.add(boxMesh);
+
+    // Outer face heat-shield / solar facet
+    const facetGeo = new THREE.BoxGeometry(0.64, 0.02, 0.36);
+    const facet = new THREE.Mesh(facetGeo, isEngine ? darkJointMat : solarFacetMat);
+    facet.position.y = 0.155;
+    modGroup.add(facet);
+
+    // Inter-module connector joint cylinder leading to adjacent module
+    const jointGeo = new THREE.CylinderGeometry(0.10, 0.10, 0.34, 12);
+    jointGeo.rotateZ(Math.PI / 2);
+    const joint = new THREE.Mesh(jointGeo, darkJointMat);
+    joint.position.x = 0.44;
+    modGroup.add(joint);
+
+    if (isEngine) {
+      // Twin propulsion nozzles on the rear of the module
+      [-0.10, 0.10].forEach(zOff => {
+        const nozGeo = new THREE.CylinderGeometry(0.07, 0.045, 0.18, 12);
+        nozGeo.rotateZ(Math.PI / 2);
+        const noz = new THREE.Mesh(nozGeo, nozzleMat);
+        noz.position.set(-0.42, 0, zOff);
+        modGroup.add(noz);
+
+        const plumeGeo = new THREE.ConeGeometry(0.06, 0.35, 10);
+        plumeGeo.rotateZ(-Math.PI / 2);
+        const plume = new THREE.Mesh(plumeGeo, ionPlumeMat);
+        plume.position.set(-0.64, 0, zOff);
+        modGroup.add(plume);
+        plumes.push(plume);
+      });
+    } else {
+      // Habitation & Lab modules: illuminated observation window slits on the inner face
+      [-0.15, 0.15].forEach(xOff => {
+        const wGeo = new THREE.BoxGeometry(0.08, 0.02, 0.04);
+        const wMat = (i % 2 === 0) ? windowAmberMat : windowCyanMat;
+        const wMesh = new THREE.Mesh(wGeo, wMat);
+        wMesh.position.set(xOff, -0.155, 0);
+        modGroup.add(wMesh);
+      });
+    }
+
+    ringGroup.add(modGroup);
+  }
+
+  // --- CENTRAL DOCKING HUB & SPOKES ---
+  const hubGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.75, 24);
+  const hubMesh = new THREE.Mesh(hubGeo, hullMat);
+  hubMesh.rotation.x = Math.PI / 2; // Aligned along rotation axis
+  ringGroup.add(hubMesh);
+
+  // Forward & Aft Docking Rings on the Hub
+  [-0.4, 0.4].forEach(z => {
+    const dockGeo = new THREE.TorusGeometry(0.32, 0.035, 10, 24);
+    const dock = new THREE.Mesh(dockGeo, darkJointMat);
+    dock.position.z = z;
+    ringGroup.add(dock);
+  });
+
+  // Forward Observation Cupola on the Hub
+  const hubCupolaGeo = new THREE.SphereGeometry(0.20, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2);
+  hubCupolaGeo.rotateX(-Math.PI / 2);
+  const hubCupola = new THREE.Mesh(hubCupolaGeo, windowCyanMat);
+  hubCupola.position.z = 0.42;
+  ringGroup.add(hubCupola);
+
+  // 4 Structural Tubular Spokes connecting Hub to the 4 Engine Nodes
+  for (let i = 0; i < 4; i++) {
+    const angle = (i * Math.PI) / 2;
+    const spokeGeo = new THREE.CylinderGeometry(0.032, 0.032, ringRadius, 8);
+    const spoke = new THREE.Mesh(spokeGeo, spokeMat);
+    spoke.position.x = (Math.cos(angle) * ringRadius) / 2;
+    spoke.position.y = (Math.sin(angle) * ringRadius) / 2;
+    spoke.rotation.z = angle - Math.PI / 2;
+    ringGroup.add(spoke);
+  }
+
+  // Docked Explorer Craft (Ranger silhouette docked at the hub)
+  const rangerGroup = new THREE.Group();
+  rangerGroup.position.set(0, 0, 0.55);
+  const rangerBodyGeo = new THREE.ConeGeometry(0.16, 0.46, 4);
+  rangerBodyGeo.rotateZ(Math.PI / 4);
+  const rangerMesh = new THREE.Mesh(rangerBodyGeo, hullMat);
+  rangerGroup.add(rangerMesh);
+  ringGroup.add(rangerGroup);
+
+  // 5. Non-Interactable Purely Ambient Motion (Endurance continuous artificial gravity spin)
+  let animId = null;
+  let lastTime = 0;
+
+  function render(time) {
+    const curTime = time || performance.now();
+    const dt = lastTime ? Math.min((curTime - lastTime) / 1000, 0.1) : 0.016;
+    lastTime = curTime;
+    const delta = dt * 60;
+
+    // Continuous artificial gravity spin of the ring assembly (Interstellar style)
+    if (!prefersReduced.matches) {
+      ringGroup.rotation.z += 0.0085 * delta;
+
+      // Serene, slow celestial orientation drift in space
+      stationRoot.rotation.y += 0.0006 * delta;
+      stationRoot.rotation.x = 0.42 + Math.sin(curTime * 0.0003) * 0.02;
+
+      // Gentle ion thruster breathing
+      const pulse = 1.0 + Math.sin(curTime * 0.006) * 0.08;
+      plumes.forEach(p => p.scale.set(pulse, pulse, pulse));
+    }
+
+    renderer.render(scene, camera);
+    animId = requestAnimationFrame(render);
+  }
+
+  // 8. Performance & Visibility Lifecycle
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!animId) {
+          lastTime = performance.now();
+          animId = requestAnimationFrame(render);
+        }
+      } else {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      }
+    });
+  }, { threshold: 0.05 });
+
+  obs.observe(wrapper);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      lastTime = 0;
+    } else if (!animId) {
+      lastTime = performance.now();
+      animId = requestAnimationFrame(render);
+    }
+  });
+
+  animId = requestAnimationFrame(render);
+}
+
