@@ -1176,13 +1176,22 @@
           <span>End of the page, not the journey :)</span>
         </a>
 
-        <button type="button" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
-          aria-label="Scroll back to top">
-          <span>Back to Top</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-          </svg>
-        </button>
+        <div class="footer-actions">
+          <button type="button" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+            aria-label="Scroll back to top">
+            <span>Back to Top</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+
+          <a href="404.html" class="dont-click-btn" id="dont-click-btn"
+            aria-label="Don't click this button">
+            <span class="dont-click-pulse-dot" aria-hidden="true"></span>
+            <span class="dont-click-label">Don't Click Me</span>
+            <span class="dont-click-mini-tooltip" aria-hidden="true">⚠️ Don't do it!</span>
+          </a>
+        </div>
       </div>
 
       <div class="footer-bottom">
@@ -1211,6 +1220,21 @@
     </div>
   </div>
 
+
+  <!-- Warp Breach Redirection Overlay -->
+  <div class="warp-breach-overlay" id="warp-breach-overlay" aria-hidden="true">
+    <div class="warp-breach-vortex" aria-hidden="true"></div>
+    <div class="warp-breach-scanlines" aria-hidden="true"></div>
+    <div class="warp-breach-dialog">
+      <div class="warp-breach-siren">⚠️</div>
+      <div class="warp-breach-code">CRITICAL PROTOCOL BREACH</div>
+      <div class="warp-breach-title">Initiating Singularity Jump...</div>
+      <div class="warp-breach-sub">Warping to 404 Spacetime Anomaly</div>
+      <div class="warp-breach-progress-bar">
+        <div class="warp-breach-progress-fill"></div>
+      </div>
+    </div>
+  </div>
 
   <canvas class="cursor-particles-canvas" id="cursor-particles-canvas" aria-hidden="true"></canvas>
   <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
