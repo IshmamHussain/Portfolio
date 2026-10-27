@@ -3360,6 +3360,249 @@ img {
   }
 }
 
+/* ==========================================================================
+   FOOTER ACTIONS & COMPACT "DON'T CLICK ME" BUTTON
+   ========================================================================== */
+
+.footer-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Standalone Compact "Don't Click Me" Button */
+.dont-click-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #fca5a5;
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px dashed rgba(244, 63, 94, 0.45);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+  user-select: none;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.15);
+}
+
+.dont-click-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 6px #f43f5e;
+  animation: blinkRed 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.dont-click-btn:hover {
+  color: #ffffff;
+  background: rgba(244, 63, 94, 0.2);
+  border-color: #f43f5e;
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+  transform: translateY(-2px);
+  animation: compactGlitch 0.2s ease infinite alternate;
+}
+
+.dont-click-btn:hover .dont-click-label {
+  text-shadow: -1.5px 0 0 #38bdf8, 1.5px 0 0 #f43f5e;
+}
+
+.dont-click-btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes compactGlitch {
+  0% { transform: translateY(-2px) translate(0, 0); }
+  25% { transform: translateY(-2px) translate(-1px, 0.5px); }
+  50% { transform: translateY(-2px) translate(1px, -0.5px); }
+  75% { transform: translateY(-2px) translate(-0.5px, -0.5px); }
+  100% { transform: translateY(-2px) translate(0.5px, 0.5px); }
+}
+
+.dont-click-mini-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(244, 63, 94, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 14px rgba(244, 63, 94, 0.2);
+  color: #fecdd3;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.dont-click-mini-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 18px;
+  border-width: 4px 4px 0 4px;
+  border-style: solid;
+  border-color: rgba(244, 63, 94, 0.5) transparent transparent transparent;
+}
+
+.dont-click-btn:hover .dont-click-mini-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   WARP BREACH REDIRECTION OVERLAY
+   ========================================================================== */
+.warp-breach-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.32) 0%, rgba(2, 4, 8, 0.98) 75%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.warp-breach-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.warp-breach-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.45) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.warp-breach-vortex {
+  position: absolute;
+  width: 140vmax;
+  height: 140vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(168, 85, 247, 0.25) 35%, rgba(244, 63, 94, 0.15) 60%, transparent 80%);
+  animation: warpVortexSpin 1.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes warpVortexSpin {
+  0% { transform: rotate(0deg) scale(0.6); }
+  50% { transform: rotate(180deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(0.6); }
+}
+
+.warp-breach-dialog {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 480px;
+  padding: 36px 32px;
+  background: rgba(6, 10, 22, 0.88);
+  border: 1.5px solid rgba(244, 63, 94, 0.55);
+  border-radius: 24px;
+  box-shadow: 0 0 60px rgba(244, 63, 94, 0.4), 0 25px 60px rgba(0, 0, 0, 0.9);
+  animation: dialogPunch 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dialogPunch {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.warp-breach-siren {
+  font-size: 38px;
+  margin-bottom: 12px;
+  animation: blinkRed 0.6s ease-in-out infinite;
+}
+
+.warp-breach-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #f43f5e;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.warp-breach-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.warp-breach-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+
+.warp-breach-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.warp-breach-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f43f5e, #f59e0b, #38bdf8);
+  border-radius: 999px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.warp-breach-overlay.active .warp-breach-progress-fill {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .footer-actions {
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .dont-click-mini-tooltip {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  .dont-click-mini-tooltip::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .dont-click-btn:hover .dont-click-mini-tooltip {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
 
 
 
