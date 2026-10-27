@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSpiralGalaxy();
   initCartwheelGalaxy();
   initSpaceStation3D();
+  initDontClickButton();
 });
 
 
@@ -4092,5 +4093,107 @@ function initSpaceStation3D() {
   });
 
   animId = requestAnimationFrame(render);
+}
+
+
+/* ==========================================================================
+   CLASSIFIED "DON'T CLICK ME" INTERACTION & WARP REDIRECTION
+   ========================================================================== */
+
+function initDontClickButton() {
+  const btn = document.getElementById('dont-click-btn');
+  const overlay = document.getElementById('warp-breach-overlay');
+  if (!btn) return;
+
+  // Lightweight Web Audio API Synthesizer (Zero external dependencies)
+  let audioCtx = null;
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtxClass) {
+        audioCtx = new AudioCtxClass();
+      }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {});
+    }
+    return audioCtx;
+  }
+
+  function playAnomalyChirp() {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(340, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(160, ctx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.035, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.13);
+    } catch (_) {}
+  }
+
+  function playWarpDiveSound() {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc1.type = 'sawtooth';
+      osc2.type = 'sine';
+
+      osc1.frequency.setValueAtTime(140, now);
+      osc1.frequency.exponentialRampToValueAtTime(820, now + 0.22);
+      osc1.frequency.exponentialRampToValueAtTime(40, now + 0.52);
+
+      osc2.frequency.setValueAtTime(280, now);
+      osc2.frequency.exponentialRampToValueAtTime(110, now + 0.52);
+
+      gain.gain.setValueAtTime(0.07, now);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.2);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.52);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 0.54);
+      osc2.stop(now + 0.54);
+    } catch (_) {}
+  }
+
+  btn.addEventListener('pointerenter', () => {
+    playAnomalyChirp();
+  });
+
+  btn.addEventListener('click', (e) => {
+    // If user holds Ctrl, Cmd, Shift, or Alt, or uses middle click, let browser handle new tab
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) {
+      return;
+    }
+
+    e.preventDefault();
+    playWarpDiveSound();
+
+    if (overlay) {
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Smooth warp transition before redirecting to 404.html
+    setTimeout(() => {
+      window.location.href = '404.html';
+    }, 460);
+  });
 }
 
