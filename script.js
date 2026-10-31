@@ -4105,75 +4105,26 @@ function initDontClickButton() {
   const overlay = document.getElementById('warp-breach-overlay');
   if (!btn) return;
 
-  // Lightweight Web Audio API Synthesizer (Zero external dependencies)
-  let audioCtx = null;
-  function getAudioContext() {
-    if (!audioCtx) {
-      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtxClass) {
-        audioCtx = new AudioCtxClass();
-      }
+  function dismissOverlay() {
+    if (overlay) {
+      overlay.classList.remove('active');
     }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume().catch(() => {});
+    document.body.style.overflow = '';
+  }
+
+  // Ensure overlay is never stuck when returning via mouse back button, bfcache, or history
+  window.addEventListener('pageshow', dismissOverlay);
+  window.addEventListener('pagehide', dismissOverlay);
+  window.addEventListener('popstate', dismissOverlay);
+
+  if (overlay) {
+    overlay.addEventListener('click', dismissOverlay);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dismissOverlay();
     }
-    return audioCtx;
-  }
-
-  function playAnomalyChirp() {
-    try {
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(340, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(160, ctx.currentTime + 0.12);
-      gain.gain.setValueAtTime(0.035, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.13);
-    } catch (_) {}
-  }
-
-  function playWarpDiveSound() {
-    try {
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const osc1 = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc1.type = 'sawtooth';
-      osc2.type = 'sine';
-
-      osc1.frequency.setValueAtTime(140, now);
-      osc1.frequency.exponentialRampToValueAtTime(820, now + 0.22);
-      osc1.frequency.exponentialRampToValueAtTime(40, now + 0.52);
-
-      osc2.frequency.setValueAtTime(280, now);
-      osc2.frequency.exponentialRampToValueAtTime(110, now + 0.52);
-
-      gain.gain.setValueAtTime(0.07, now);
-      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.2);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.52);
-
-      osc1.connect(gain);
-      osc2.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc1.start(now);
-      osc2.start(now);
-      osc1.stop(now + 0.54);
-      osc2.stop(now + 0.54);
-    } catch (_) {}
-  }
-
-  btn.addEventListener('pointerenter', () => {
-    playAnomalyChirp();
   });
 
   btn.addEventListener('click', (e) => {
@@ -4183,7 +4134,6 @@ function initDontClickButton() {
     }
 
     e.preventDefault();
-    playWarpDiveSound();
 
     if (overlay) {
       overlay.classList.add('active');
@@ -4193,6 +4143,8 @@ function initDontClickButton() {
     // Smooth warp transition before redirecting to 404.html
     setTimeout(() => {
       window.location.href = '404.html';
+      // Auto-reset DOM state immediately after redirect trigger so bfcache never snapshots an active overlay
+      setTimeout(dismissOverlay, 150);
     }, 460);
   });
 }
