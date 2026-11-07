@@ -842,13 +842,14 @@ img {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
 
 @media (max-width: 1100px) {
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 }
 
@@ -1746,7 +1747,7 @@ img {
 
   /* Projects Section */
   .projects-grid {
-    gap: 18px;
+    gap: 24px;
   }
 
   .project-content {
@@ -1893,8 +1894,8 @@ img {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 
   .skills-showcase-grid {

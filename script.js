@@ -310,6 +310,21 @@ const PROJECT_DETAILS = {
     metrics: 'Real-Time Price Ticker • MongoDB Atlas Caching • Deployed on Vercel',
     demoUrl: 'https://bazaar-dor.vercel.app',
     githubUrl: 'https://github.com/IshmamHussain/Bazaar-Dor'
+  },
+  'studiospace': {
+    title: 'StudioSpace — Peer-to-Peer Creative Studio Marketplace',
+    tag: 'Next.js 16 • React 19 • TypeScript • MongoDB Atlas • Express REST • Better-Auth',
+    description: 'StudioSpace is a high-performance peer-to-peer marketplace engineered for filmmakers, photographers, podcasters, and musicians to discover, tour, and book verified production soundstages, daylight cycloramas, podcast lounges, and analog recording suites.',
+    highlights: [
+      'Real-Time Double-Booking Collision Prevention Engine with intelligent scheduling interval algorithms cross-checking confirmed reservations in real-time.',
+      'Aperture & Spotlight adaptive design system featuring fluid switching between Tungsten Obsidian and Porcelain Daylight themes with Framer Motion micro-interactions.',
+      'Vector PDF booking invoice & receipt export engine (jsPDF) detailing hourly schedules, studio location, rate breakdown, and platform guarantee IDs.',
+      'Enterprise-grade session management with Better-Auth, MongoDB adapter, and signed HTTPOnly JWT cookies ensuring persistent sessions without client token exposure.',
+      'Multi-discipline studio discovery across Photo Studios, Sound Stages, Podcast Lounges, and Music Suites with dynamic filtering and optimistic wishlist bookmarking.'
+    ],
+    metrics: 'Collision-Proof Booking Engine • Vector PDF Exports • Deployed on Vercel',
+    demoUrl: 'https://studio-space-rho.vercel.app',
+    githubUrl: 'https://github.com/IshmamHussain/StudioSpace-Client'
   }
 };
 
