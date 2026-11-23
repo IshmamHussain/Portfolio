@@ -346,6 +346,7 @@ const CERT_DETAILS = {
     id: 'Certificate No: 560/2026',
     grade: 'Presented & Authored Research Paper',
     image: 'assets/images/certificates/cert-murs-authorship.png',
+    paperUrl: 'assets/docs/Following_the_Sun_Pakistan_Solar_Boom.pdf',
     skills: 'Academic Research, Scholarly Paper Authoring, Conference Presentation, Sustainable Development Goals (SDGs), Interdisciplinary Analysis',
     description: 'Proudly presented to Ishmam Hussain Chowdhury in recognition of presenting and authoring a research paper at the National Interdisciplinary Conference on Sustainable Development Goals 2026 (NICSDG-2026), held on 17–18 July 2026 at Metropolitan University, Sylhet. Officially signed by MURS General Secretary Shahriar Alam Mehedi Tapadar and Conference Convener Md. Ziaur Rahman.'
   },
@@ -356,6 +357,7 @@ const CERT_DETAILS = {
     id: 'Conference: LURS 3rd Student Research Conference 2026',
     grade: 'Paper Presentation Participant',
     image: 'assets/images/certificates/cert-lurs-presentation.jpg',
+    paperUrl: 'assets/docs/Watching_Responsibly_AI_Traffic_Surveillance.pdf',
     skills: 'Paper Presentation, Scholarly Research, Sustainable Development Solutions, Interdisciplinary Innovation',
     description: 'Proudly presented to Ishmam Hussain for participating in Paper Presentation in the "LURS 3rd Student Research Conference 2026" themed "Turning Ideas into Sustainable Solutions for a Better Tomorrow", organized by Leading University Research Society on August 01, 2026. Officially signed by Advisor Dr. Shafkat Kibria (Associate Professor) and Co-Advisor Md. Jamaner Rahaman (Assistant Professor).'
   }
@@ -463,9 +465,14 @@ function initModals() {
         </div>
 
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="${data.image}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modal-cert-external-link">
+          <a href="${data.image}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="modal-cert-external-link">
             Open Original File in New Tab ↗
           </a>
+          ${data.paperUrl ? `
+            <a href="${data.paperUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              Read Paper ↗
+            </a>
+          ` : ''}
         </div>
       `;
 
