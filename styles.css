@@ -960,6 +960,38 @@ img {
   justify-content: center;
 }
 
+@media (min-width: 769px) {
+  .projects-grid .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: stretch;
+  }
+
+  .projects-grid .project-card:last-child:nth-child(odd) .project-media {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: clamp(260px, 24vw, 345px);
+  }
+
+  .projects-grid .project-card:last-child:nth-child(odd) .project-content {
+    padding: clamp(22px, 2.5vw, 32px);
+    justify-content: center;
+  }
+
+  .projects-grid .project-card:last-child:nth-child(odd) .project-subtitle {
+    flex-grow: 0;
+    margin-bottom: 18px;
+  }
+
+  .projects-grid .project-card:last-child:nth-child(odd) .project-badge-tag {
+    top: 14px;
+    right: 14px;
+    font-size: 11.5px;
+    padding: 5px 12px;
+  }
+}
+
 
 
 /* Skills Section — Modern 3-Column Card Layout with Squircle Icon Grids */

@@ -325,6 +325,21 @@ const PROJECT_DETAILS = {
     metrics: 'Collision-Proof Booking Engine • Vector PDF Exports • Deployed on Vercel',
     demoUrl: 'https://studio-space-rho.vercel.app',
     githubUrl: 'https://github.com/IshmamHussain/StudioSpace-Client'
+  },
+  'salonbook': {
+    title: 'SalonBook — Role-Based Salon Appointment & Stripe Platform',
+    tag: 'Next.js 16 • React 19 • TypeScript • Tailwind CSS v4 • Express 5 • MongoDB • Better-Auth • Stripe',
+    description: 'SalonBook is a full-stack salon appointment booking platform styled in a sunlit French Maison aesthetic, bridging seamless service discovery with conflict-free slot scheduling, role-based dashboards, and verified post-confirmation Stripe Checkout payments.',
+    highlights: [
+      'Sunlit Maison storefront featuring a three-column terrace hero, live service search by name, 7 treatment categories, and price sorting.',
+      'Conflict-free appointment engine enforcing active-service validation, past-date rejection, and zero duplicate time-slot reservations via MongoDB partial unique indexing.',
+      'Role-based authentication powered by Better-Auth (Email/Password + Google OAuth) with signed JWT verification middleware and blocked-user enforcement.',
+      'Verified Stripe Checkout & webhook flow (checkout.session.completed) ensuring payments transition strictly after admin confirmation and webhook signature verification.',
+      'Dedicated Customer & Admin dashboards with appointment lifecycle controls, CRUD service management, ImgBB image upload proxy, and read-only transaction audits.'
+    ],
+    metrics: 'Conflict-Free Booking • Verified Stripe Webhooks • Express 5 & MongoDB',
+    demoUrl: 'https://salon-book-client-umber.vercel.app',
+    githubUrl: 'https://github.com/IshmamHussain/SalonBook-Client'
   }
 };
 
