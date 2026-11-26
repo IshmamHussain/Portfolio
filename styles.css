@@ -994,24 +994,71 @@ img {
 
 
 
-/* Skills Section — Modern 3-Column Card Layout with Squircle Icon Grids */
+/* Skills Section — 5-Card Bento Showcase Layout with Squircle Icon Grids */
 .skills-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 28px;
   max-width: 1260px;
   margin: 0 auto;
+}
+
+.skills-group-card {
+  grid-column: span 2;
+}
+
+.skills-group-card:nth-child(4),
+.skills-group-card:nth-child(5) {
+  grid-column: span 3;
+}
+
+.skills-group-card:nth-child(4) .skills-icon-matrix {
+  max-width: 440px;
+  width: 100%;
+  margin: auto;
+}
+
+.skills-group-card:nth-child(5) .skills-icon-matrix {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 1100px) {
   .skills-showcase-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .skills-group-card,
+  .skills-group-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .skills-group-card:nth-child(4) .skills-icon-matrix {
+    max-width: none;
+    margin: 0;
+  }
+
+  .skills-group-card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .skills-group-card:nth-child(5) .skills-icon-matrix {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (max-width: 720px) {
   .skills-showcase-grid {
     grid-template-columns: 1fr;
+  }
+
+  .skills-group-card,
+  .skills-group-card:nth-child(4),
+  .skills-group-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .skills-group-card:nth-child(5) .skills-icon-matrix {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -2317,6 +2364,16 @@ img {
   .skills-showcase-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .skills-group-card,
+  .skills-group-card:nth-child(4),
+  .skills-group-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .skills-group-card:nth-child(5) .skills-icon-matrix {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .skills-group-card {
